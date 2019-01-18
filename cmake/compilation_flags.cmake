@@ -1,3 +1,4 @@
+include(cmake/extra_warnings.cmake)
 if (MSVC)
   list(APPEND DEFAULT_CXX_FLAGS /W4 /analyze)
 
@@ -34,9 +35,7 @@ else ()
     message(STATUS "This is a debug build; enabling -Weverything...")
 
     list(APPEND DEFAULT_CXX_FLAGS
-      -Weverything -Wno-c++98-compat -Wno-missing-prototypes
-      -Wno-missing-variable-declarations -Wno-global-constructors
-      -Wno-exit-time-destructors -Wno-padded -Wno-error
+	${all_warn}
     )
   endif ()
 endif ()
